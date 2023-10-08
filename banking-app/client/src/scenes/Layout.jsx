@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import Drawer from '../components/Drawer'
+import Drawer from '../components/Drawer/Drawer'
 import Navbar from '../components/Navbar'
 import ScrollToTop from '../hooks/scroll-to-top'
 import Footer from '../components/Footer'

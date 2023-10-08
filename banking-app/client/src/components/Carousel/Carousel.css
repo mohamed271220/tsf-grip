@@ -1,0 +1,38 @@
+.gradiantCustom {
+  background: -webkit-linear-gradient(
+    -180deg,
+    rgba(40, 51, 74, 0.4) 2%,
+    rgba(40, 51, 74, 0.01) 90%,
+    rgba(37, 43, 54, 0.02) 95%,
+    rgba(33, 34, 33, 0)
+  );
+}
+
+.carousel-item__image {
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+  display: block;
+}
+@media (max-width: 730px) {
+  .carousel-item__image {
+    /* overflow-clip-margin: content-box; */
+    object-fit: cover;
+    overflow: clip;
+    height: 17rem;
+  }
+  .pickgradient {
+    height: 25%;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 75%,
+      #f4f4f400 100%
+    ); /* W3C */
+  }
+}
+.btn:hover {
+  background-color: #890b35;
+  color: white;
+}
