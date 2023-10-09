@@ -9,10 +9,11 @@
 }
 
 .carousel-item__image {
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   background-size: cover;
   position: relative;
+
   z-index: -1;
   display: block;
 }

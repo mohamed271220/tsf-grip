@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(
     cors({
         credentials: true,
-        origin: ["*"],
+        origin: ["http://localhost:5173"],
     })
 );
 // generate 30 mock users

@@ -10,8 +10,7 @@ const NewsCarousel = () => {
     return (
         <Carousel
             // autoPlay
-            animationHandler='fade'
-
+            swipeable
             showThumbs={false}
             showIndicators={false}
             showStatus={false}
@@ -21,29 +20,35 @@ const NewsCarousel = () => {
             infiniteLoop
         >
 
-            <div key={'1'} className="carousel-item relative w-full "
+            <div key={'1'} className="carousel-item relative lg:block justify-center flex  items-center w-full "
             >
-                <div className=" absolute  font-bold top-[15%] right-[15%] w-[40%] z-50">
-                    <h1 className="text-white font-mono text-[7vh] ">
+                <div className="  absolute  font-bold lg:top-[15%] lg:right-[15%] w-[40%] z-50">
+                    <h1 className="text-white font-mono text-[3vh] lg:text-[7vh] ">
                         Thinking of starting a new business?
                     </h1>
-                    <button className=" btn cursor-pointer bg-[#ffb35b] text-[5vh] px-[3vh] font-light  ">About</button>
                 </div>
                 <div className="gradiantCustom">
                     <img
-                        className="carousel-item__image"
+                        className="carousel-item__image w-full"
                         src={Carou1}
                         alt={'Carousel Image 1'}
                     />
                 </div>
             </div>
-            <div key={'2'} className="carousel-item relative"
+            <div key={'2'} className="carousel-item relative lg:block justify-center flex  items-center w-full "
             >
-                <img
-                    className="carousel-item__image"
-                    src={Carou2}
-                    alt={'Carousel Image 2'}
-                />
+                <div className="  absolute  font-bold lg:top-[15%] lg:right-[15%] w-[40%] z-50">
+                    <h1 className="text-white font-mono text-[3vh] lg:text-[7vh] ">
+                        Thinking of starting a new business?
+                    </h1>
+                </div>
+                <div className="gradiantCustom">
+                    <img
+                        className="carousel-item__image w-full"
+                        src={Carou2}
+                        alt={'Carousel Image 2'}
+                    />
+                </div>
             </div>
 
 
