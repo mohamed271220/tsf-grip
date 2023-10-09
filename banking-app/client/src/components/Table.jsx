@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { fetchUsers } from "../constants/Http";
+import { Link } from "react-router-dom";
 
 const Table = () => {
     const searchElement = useRef();
@@ -16,7 +17,7 @@ const Table = () => {
         // controlled function pass
         queryFn: ({ signal }) => fetchUsers({ signal, searchTerm: search }),
         //not to send the query immediately
-   
+
     })
 
     function handleSubmit(event) {
@@ -40,7 +41,9 @@ const Table = () => {
             <ul className="">
                 {data.map((user) => (
                     <li key={user._id}>
-                        {user.name}
+                        <Link to={`/${user._id}`}>
+                            {user.name}
+                        </Link>
                     </li>
                 ))}
             </ul>
