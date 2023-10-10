@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react"
 import { fetchUsers } from "../constants/Http";
-import { Link } from "react-router-dom";
 
+import { FaSearch } from "react-icons/fa";
 const Table = () => {
     const searchElement = useRef();
     const [search, setSearch] = useState()
@@ -38,29 +38,40 @@ const Table = () => {
     if (data) {
         console.log(data);
         content = (
-            <ul className="">
+            <table className="w-full text-[2vh]">
+                <tr>
+                    <th>Username</th>
+                    <th>Balance</th>
+                    <th>Email</th>
+                </tr>
                 {data.map((user) => (
-                    <li key={user._id}>
-                        <Link to={`/${user._id}`}>
-                            {user.name}
-                        </Link>
-                    </li>
+                    <tr key={user._id} onClick={() => window.location.href = `/${user._id}`}
+                        className="cursor-pointer">
+                        {/* <Link key={user._id} to={`/${user._id}`}> */}
+                        <td>{user.name}</td>
+                        <td>{user.balance}</td>
+                        <td>{user.email}</td>
+                        {/* </Link> */}
+                    </tr>
                 ))}
-            </ul>
+            </table>
         );
     }
 
     return (
-        <div>
-            <header>
-
-                <form onSubmit={handleSubmit} id="search-form">
+        <div id="customers" className="px-[6vh] flex flex-col justify-center items-center w-full overflow-x-auto">
+            <h1 className="text-[#00567a] font-sans font-bold text-[6vh]">Our Renowned Customers</h1>
+            <header className="w-full">
+                <form onSubmit={handleSubmit} id="search-form" className="relative mb-[3vh]" >
                     <input
                         type="search"
-                        placeholder="Search events"
+                        placeholder="Search users"
                         ref={searchElement}
+                        className="w-full h-[6vh]
+                        rounded-lg border-2 border-[#00567a] pl-[3vh] pr-[10vh] font-sans font-bold text-[2vh] focus:outline-none
+                        "
                     />
-                    <button>Search</button>
+                    <button className="absolute top-0 right-0 bg-[#00567a] text-white h-[6vh] w-[4vh] rounded-tr-lg rounded-br-lg font-sans font-bold text-[2vh] hover:bg-[#005b4a] transition-all duration-300 ease-in-out flex justify-center items-center"><FaSearch /></button>
                 </form>
             </header>
             {content}
