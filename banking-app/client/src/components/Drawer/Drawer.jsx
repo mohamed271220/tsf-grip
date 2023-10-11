@@ -6,7 +6,7 @@ import { Data } from "./Data";
 import "./Drawer.css";
 import { IconContext } from "react-icons";
 import { BiSolidLogInCircle } from 'react-icons/bi'
-
+import Logo from '../../assets/Logo.png'
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -15,10 +15,14 @@ function Navbar() {
   return (
     <div className="md:hidden block z-50">
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar ">
+        <div className="navbar pr-[3vh]">
           <Link to="#" className="menu-bars">
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
+      
+            <img src={Logo} alt="" className="
+            w-[20vh]" />
+         
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>

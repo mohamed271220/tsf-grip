@@ -12,7 +12,7 @@ router.get("/:id", apiController.getUser)
 router.get("/transactions", apiController.getTransactions)
 
 // GET TRANSACTION BY ID
-// router.get("/transactions/:id", apiController.getTransactionById)
+router.get("/transactions/:id", apiController.getTransactionById)
 
 // MAKE A TRANSACTION
 router.post("/transactions", apiController.postTransaction)

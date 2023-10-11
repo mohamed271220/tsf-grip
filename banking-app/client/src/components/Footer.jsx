@@ -8,7 +8,7 @@ const Footer = () => {
     h-[20vh]
         gap-[2vh]  justify-between items-center padding-x py-3 text-white  sticky z-50">
 
-      <div className="text-[4vh]">© 2023 - All Rights Reserved</div>
+      <div className="text-[3vh]">© 2023 - All Rights Reserved</div>
       <div className='flex flex-row gap-[2vh] text-[4vh]'>
         <a href="https://www.facebook.com"><FaFacebookSquare/></a>
         <a href="https://www.twitter.com"><TiSocialTwitter/></a>

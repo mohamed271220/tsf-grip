@@ -4,7 +4,7 @@ import  Logo  from "../assets/Logo.png"
 const Navbar = () => {
     return (
         <div className="hidden w-full md:flex flex-row bg-[#28334b]
-        gap-[2vh]  justify-between items-center padding-x py-3 text-white  sticky z-50">
+        gap-[2vh]  justify-between items-center padding-x py-3 text-white  sticky z-30">
             <div className="w-[35vh]">
                 <img src={Logo} alt="logo" />
             </div>

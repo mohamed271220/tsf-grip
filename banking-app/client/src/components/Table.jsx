@@ -3,13 +3,15 @@ import { useRef, useState } from "react"
 import { fetchUsers } from "../constants/Http";
 
 import { FaSearch } from "react-icons/fa";
+import ErrorBlock from "./ErrorBlock";
+import LoadingSpinner from '../components/Loading/LoadingSpinner/LoadingSpinner'
 const Table = () => {
     const searchElement = useRef();
     const [search, setSearch] = useState()
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: [
-            "events",
+            "customers",
             {
                 search: search,
             },
@@ -26,19 +28,21 @@ const Table = () => {
     }
     let content
     if (isLoading) {
-        content = <p>loading</p>;
+        content = <div className="flex justify-center items-center h-[80vh] w-full">
+            <LoadingSpinner />
+        </div>
     }
     if (isError) {
         content = (
-            <p
-            >An error occurred while fetching the events {error.message}</p>
+            <ErrorBlock title={'Error'} message={error.message || 'Something went wrong. Please try again later.'} />
         );
     }
 
     if (data) {
         console.log(data);
         content = (
-            <table className="w-full text-[2vh]">
+
+            <table className="">
                 <tr>
                     <th>Username</th>
                     <th>Balance</th>
@@ -55,14 +59,15 @@ const Table = () => {
                     </tr>
                 ))}
             </table>
+
         );
     }
 
     return (
-        <div id="customers" className="px-[6vh] flex flex-col justify-center items-center w-full overflow-x-auto">
+        <div id="customers" className="px-[6vh] flex flex-col  overflow-x-auto w-full">
             <h1 className="text-[#00567a] font-sans font-bold text-[6vh]">Our Renowned Customers</h1>
             <header className="w-full">
-                <form onSubmit={handleSubmit} id="search-form" className="relative mb-[3vh]" >
+                <form onSubmit={handleSubmit} id="search-form" className="relative my-[3vh]" >
                     <input
                         type="search"
                         placeholder="Search users"
@@ -74,7 +79,10 @@ const Table = () => {
                     <button className="absolute top-0 right-0 bg-[#00567a] text-white h-[6vh] w-[4vh] rounded-tr-lg rounded-br-lg font-sans font-bold text-[2vh] hover:bg-[#005b4a] transition-all duration-300 ease-in-out flex justify-center items-center"><FaSearch /></button>
                 </form>
             </header>
-            {content}
+            <div className="overflow-x-auto text-[2vh] w-full ">
+
+                {content}
+            </div>
         </div>
     )
 }

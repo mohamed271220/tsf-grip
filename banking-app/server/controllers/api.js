@@ -6,16 +6,16 @@ exports.getUsers = async (req, res) => {
     const { max, search } = req.query;
     try {
         if (max) {
-            const users = await User.find().populate('transactions').limit(parseInt(max))
+            const users = await User.find().limit(parseInt(max))
             res.status(200).json({ users })
         } else if (search) {
-            const users = await User.find({ name: { $regex: search } }).populate('transactions')
+            const users = await User.find({ name: { $regex: search } })
             res.status(200).json({ users })
         } else if (max && search) {
-            const users = await User.find({ name: { $regex: search } }).populate('transactions').limit(parseInt(max))
+            const users = await User.find({ name: { $regex: search } }).limit(parseInt(max))
             res.status(200).json({ users })
         } else {
-            const users = await User.find().populate('transactions')
+            const users = await User.find()
             res.status(200).json({ users })
         }
     } catch (error) {
@@ -28,7 +28,7 @@ exports.getUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
     const id = req.params.id
     try {
-        const user = await User.findById(id).populate('transactions')
+        const user = await User.findById(id)
         res.status(200).json({ user })
     }
     catch (error) {
@@ -53,8 +53,9 @@ exports.getTransactions = async (req, res) => {
 exports.getTransactionById = async (req, res) => {
     const id = req.params.id
     try {
-        const transaction = await Transaction.findById(id)
-        res.status(200).json({ transaction })
+        // all transactions where user is sender or receiver
+        const transactions = await Transaction.find({ $or: [{ from: id }, { to: id }] })
+        res.status(200).json({ transactions })
     }
     catch (error) {
         if (!err.statusCode) {
