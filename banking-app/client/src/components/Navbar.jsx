@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom"
-import  Logo  from "../assets/Logo.png"
+import { Link, NavLink } from "react-router-dom"
+import Logo from "../assets/Logo.png"
 
 const Navbar = () => {
     return (
@@ -13,7 +13,7 @@ const Navbar = () => {
                     <NavLink className='text-[3vh]' to="/">Home</NavLink>
                 </li>
                 <li className="nav-text">
-                    <NavLink className='text-[3vh]' to="#customers">Customers</NavLink>
+                    <Link className='text-[3vh]' to="/#customers">Customers</Link>
                 </li>
             </ul>
 

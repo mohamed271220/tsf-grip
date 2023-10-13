@@ -70,7 +70,7 @@ const Customer = () => {
 
 
   if (transactions && transactions?.length > 0) {
-    table = <div className="overflow-x-auto text-[2vh] w-full flex flex-col gap-[5vh]">
+    table = <div className="overflow-x-auto text-[2vh] w-full flex flex-col gap-[5vh] p-[3vh]">
       <table className="">
         <tr>
           <th>From</th>
@@ -78,7 +78,7 @@ const Customer = () => {
           <th>Amount</th>
         </tr>
         {transactions.map((transaction) => (
-          <tr key={transaction._id} onClick={() => window.location.href = `/${transaction._id}`}
+          <tr key={transaction._id} 
             className="cursor-pointer">
             {/* <Link key={transaction._id} to={`/${transaction._id}`}> */}
             <td className={`${transaction.from === id ? 'text-[#00567a] font-bold' : ''}`}>{transaction.from}</td>
@@ -102,7 +102,7 @@ const Customer = () => {
 
   return (
     <div className="flex flex-col gap-[5vh]">
-      {isModalOpen && <TransferModal  onClose={handleCloseModal} />}
+      {isModalOpen && <TransferModal id={id}  onClose={handleCloseModal} />}
       {content}
       {table}
     </div>
