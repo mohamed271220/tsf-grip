@@ -17,12 +17,12 @@ const Customer = () => {
     setIsModalOpen(false);
   }
 
-  const { data: user, isLoading: userLoading, isError: userError, error: userErrorMsg } = useQuery({
+  const { data: user, isLoading: userLoading, isError: userError, error: userErrorMsg, refetch:userRefetch } = useQuery({
     queryKey: ['customer', id],
     queryFn: ({ signal }) => fetchUser({ signal, id })
   })
 
-  const { data: transactions, isLoading: transactionsLoading, isError: transactionsError, error: transactionsErrorMsg } = useQuery({
+  const { data: transactions, isLoading: transactionsLoading, isError: transactionsError, error: transactionsErrorMsg,refetch } = useQuery({
     queryKey: ['transactions', id],
     queryFn: ({ signal }) => fetchTransactions({ signal, id })
   })
@@ -78,7 +78,7 @@ const Customer = () => {
           <th>Amount</th>
         </tr>
         {transactions.map((transaction) => (
-          <tr key={transaction._id} 
+          <tr key={transaction._id}
             className="cursor-pointer">
             {/* <Link key={transaction._id} to={`/${transaction._id}`}> */}
             <td className={`${transaction.from === id ? 'text-[#00567a] font-bold' : ''}`}>{transaction.from}</td>
@@ -102,7 +102,7 @@ const Customer = () => {
 
   return (
     <div className="flex flex-col gap-[5vh]">
-      {isModalOpen && <TransferModal id={id}  onClose={handleCloseModal} />}
+      {isModalOpen && <TransferModal userRefetch={userRefetch} id={id} refetch={refetch} onClose={handleCloseModal} />}
       {content}
       {table}
     </div>

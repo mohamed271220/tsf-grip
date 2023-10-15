@@ -1,22 +1,12 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const transactionsSchema = new Schema({
-    from: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
-    to: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
-    amount: {
-        type: Number,
-        required: true,
-    },
+const transactionSchema = new Schema({
+    from: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    to: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    amount: { type: Number, required: true },
+}, {
+    timestamps: true
 });
 
-
-module.exports = mongoose.model("Transaction", transactionsSchema);
+module.exports = mongoose.model('Transaction', transactionSchema);

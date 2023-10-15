@@ -68,8 +68,8 @@ exports.postTransaction = async (req, res, next) => {
     const { amount, from, to } = req.body
     console.log(amount, from, to);
     try {
-        const fromUser = await User.findById(from)
-        const toUser = await User.findById(to)
+        const fromUser = await User.findById(from).exec()
+        const toUser = await User.findById(to).exec()
         if (!fromUser || !toUser) {
             throw new Error("User not found")
         }

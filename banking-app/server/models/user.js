@@ -10,11 +10,7 @@ const userSchema = new Schema({
         required: true,
         default: 0,
     },
-    transactions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Transaction',
-        required: false
-    }],
+    transactions: [{ type: Schema.Types.ObjectId, ref: 'Transaction' }],
     socialId: {
         type: String,
         required: true

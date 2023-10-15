@@ -7,7 +7,7 @@ import { fetchUsers } from "../constants/Http";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 
-const TransferModal = ({ onClose, id }) => {
+const TransferModal = ({ onClose, id, refetch, userRefetch }) => {
 
     const [amountValue, setAmountValue] = useState('');
     const searchElement = useRef();
@@ -56,9 +56,10 @@ const TransferModal = ({ onClose, id }) => {
                 to: selectedRow
             })
             setLoading(false)
-            if (response.status === 200) {
+            if (response) {
                 onClose()
-
+                refetch()
+                userRefetch()
             }
         } catch (err) {
             setLoading(false)
@@ -77,7 +78,7 @@ const TransferModal = ({ onClose, id }) => {
                     <th>Balance</th>
                     <th>Email</th>
                 </tr>
-                {data.filter((user) => user._id !== id).map((user)=> (
+                {data.filter((user) => user._id !== id).map((user) => (
                     <tr key={user._id} onClick={() => setSelectedRow(user._id)}
                         className="cursor-pointer">
                         <td>
